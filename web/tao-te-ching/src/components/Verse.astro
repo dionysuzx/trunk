@@ -1,0 +1,22 @@
+---
+// Import the JSON data directly if it's static and can be bundled with your site
+import chapters from "../data/taoteching.json";
+
+// Function to format chapter numbers from "Chapter 74" to "74"
+function formatChapterNumber(chapterTitle: string) {
+  return chapterTitle.split(" ")[1];
+}
+---
+
+<div>
+  {
+    Object.entries(chapters).map(([chapter, text]) => (
+      <div class="chapter">
+        <div class="chapter-number">
+          <b>{formatChapterNumber(chapter)}</b>
+        </div>
+        <pre class="text">{text}</pre>
+      </div>
+    ))
+  }
+</div>
